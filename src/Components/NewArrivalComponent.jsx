@@ -1,17 +1,11 @@
 import { Description } from "@mui/icons-material";
 import NewArrivalHeader from "./NewArrivalHeader";
-import Title from "./Title";
 
 export default function NewArrivalComponent() {
     return (
-        <div className="new-arrival-component flex flex-col justify-between max-w-7xl">
-            <div className="w-[100%]">
-                <Title prop={{
-                    title1: "Featured",
-                    title2: "New Arrival",
-                }} />
-            </div>
-            <div className="new-arrival-component-images mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="new-arrival-component flex flex-col justify-between w-full">
+
+            <div className="max-w-7xl mx-auto new-arrival-component-images mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Left */}
                 <div className="left-div relative flex justify-center bg-black">
                     <img className="mt-[40px] w-[80%] align-middle" src="./PS5.svg" alt="PS5 Image" />
@@ -24,12 +18,12 @@ export default function NewArrivalComponent() {
                 </div>
 
                 {/* Right */}
-                <div className=" right-div  relative gap-6 grid grid-rows-[auto auto]">
+                <div className="right-div  relative gap-6 grid grid-rows-[auto auto]">
 
                     {/* Top */}
-                    <div className="relative right-top-div flex justify-end h-[284px]  bg-black">
-                        <img className="w-[70%]"  src="./Women.svg" alt="Women Image" />
-                        <div className="right-top-new-arrival-header absolute bottom-16 mr-28 md:mr-44 lg:mr-36  z-10 w-[60%] flex flex-col gap-[16px]">
+                    <div className="relative right-top-div flex justify-end h-[270px]  bg-black">
+                        <img className="w-[70%]" src="./Women.svg" alt="Women Image" />
+                        <div className="right-top-new-arrival-header absolute bottom-16 mr-32 md:mr-[260px] lg:mr-36  z-10 w-[60%] flex flex-col gap-[16px]">
                             <NewArrivalHeader prop={{
                                 title: "Women’s Collections",
                                 description: "Featured woman collections that give you another vibe."
@@ -50,7 +44,7 @@ export default function NewArrivalComponent() {
                                 }} />
                             </div>
                         </div>
-                    
+
 
                         {/* Right */}
                         <div className="relative right-bottom-right-div flex justify-center items-center h-[284px] bg-black">

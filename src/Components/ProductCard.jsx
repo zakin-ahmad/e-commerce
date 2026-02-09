@@ -1,71 +1,68 @@
-import { Card, CardMedia, CardContent, Typography, IconButton, Box } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import * as React from 'react';
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
-import { useState } from "react";
+import { Heart, Eye, Star } from 'lucide-react';
 
-
-export default function ProductCard({ prop }) {
-  const [isHovered, setIsHovered] = useState(false);
-
+const ProductCard = ({ product }) => {
   return (
-      <Card className="product-card flex flex-col w-[250px] max-h-[280px] rounded-lg relative shadow-md"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="flex flex-col bg-gray-100">
-          {/* Discount Badge */}
-          <span className="absolute ml-5 top-2 bg-red-600 text-white px-3 w-[50px] rounded-md text-sm">
-            {prop.discount}
-          </span>
+    <div className="group relative max-w-52 sm:max-w-56 md:max-w-60 lg:max-w-72 cursor-pointer">
+      {/* Upper Section: Image & Actions */}
+      <div className="relative h-[200px] md:h-[250px] w-full overflow-hidden rounded-sm bg-[#F5F5F5] flex items-center justify-center transition-shadow duration-300 group-hover:shadow-lg">
+        
+        {/* Discount Badge */}
+        {product.discount && (
+          <div className="absolute left-3 top-3 rounded bg-[#DB4444] px-3 py-1 text-xs font-medium text-white">
+            -{product.discount}%
+          </div>
+        )}
 
-          {/* Favorite & View Icons */}
-          <Box className="absolute top-5 right-0 -mr-[10px] rotate-90">
-            <IconButton className="bg-white m-2 text-xs px-2 py-1 -rotate-90">
-              <FavoriteBorderIcon className="text-sm" />
-            </IconButton>
-            <IconButton className="bg-white m-2 text-xs px-2 py-1 rotate-90">
-              <VisibilityIcon className="text-sm" />
-            </IconButton>
-          </Box>
+        {/* Action Buttons */}
+        <div className="absolute right-3 top-3 flex flex-col gap-2">
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-colors hover:bg-[#DB4444] hover:text-white">
+            <Heart size={18} />
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-colors hover:bg-[#DB4444] hover:text-white">
+            <Eye size={18} />
+          </button>
+        </div>
 
-          {/* Product Image */}
-          <CardMedia
-            component="img"
-            image={prop.img} // Replace with actual image
-            alt={prop.title}
-            sx={{ height: 140, objectFit: "contain", mt: 2 }}
-          />
+        {/* Product Image */}
+        <img 
+          src={`http://localhost:5000/${product.image}`}
+          alt={product.productName} 
+          className="h-auto w-auto max-h-[180px] object-contain transition-transform duration-300 group-hover:scale-110"
+        />
 
-          {isHovered && (
-            <div><button className="absolute bg-black w-full text-white p-1 rounded ">
-              Add To Cart
-            </button></div>
+        {/* Add to Cart Button (Slide-up on Hover) */}
+        <button className="absolute bottom-0 w-full translate-y-full bg-black py-3 text-center text-sm font-medium text-white transition-all duration-300 group-hover:translate-y-0">
+          Add To Cart
+        </button>
+      </div>
+
+      {/* Lower Section: Info */}
+      <div className="mt-4 space-y-2">
+        <h3 className="text-sm md:text-base font-semibold text-black truncate">{product.productName}</h3>
+        
+        <div className="flex items-center gap-3">
+          <span className="font-medium text-[#DB4444]">${product.currentPrice}</span>
+          {product.oldPrice && (
+            <span className="text-sm text-gray-400 line-through">${product.oldPrice}</span>
           )}
         </div>
 
-        {/* Product Details */}
-        <CardContent className="mt-[20px]">
-          <Typography variant="body1" fontWeight={600}>
-            {prop.title}
-          </Typography>
-
-          <Box className="flex items-center gap-1">
-            <Typography variant="h6" color="error" fontWeight={600}>
-              {prop.newprice}
-            </Typography>
-            <Typography variant="body2" className="line-through text-gray-500" >
-              {prop.oldprice}
-            </Typography>
-          </Box>
-
-          {/* Ratings */}
-          <Stack spacing={1}>
-            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-          </Stack>
-        </CardContent>
-      </Card>
+        <div className="flex items-center gap-2">
+          <div className="flex text-[#FFAD33]">
+            {[...Array(5)].map((_, i) => (
+              <Star 
+                key={i} 
+                size={16} 
+                fill={i < Math.floor(product.rating) ? "#FFAD33" : "none"} 
+                stroke={i < Math.floor(product.rating) ? "none" : "#D1D5DB"}
+              />
+            ))}
+          </div>
+          <span className="text-xs font-semibold text-gray-400">({product.reviews})</span>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default ProductCard;

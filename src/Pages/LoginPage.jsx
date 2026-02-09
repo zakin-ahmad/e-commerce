@@ -3,7 +3,6 @@ import TopHeader from '../Components/TopHeader'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
 import "../Pages/Responsive.css"
-import React from 'react'
 
 const LoginPage = () => {
     return (

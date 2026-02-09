@@ -20,9 +20,6 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import { Link } from "react-router-dom";
-import { useState } from "react";
-import Statistics from "../Components/Statistics.jsx";
 
 const teamMembers = [
   {
@@ -51,15 +48,6 @@ export default function About() {
       <NavBar />
       <SearchBar />
 
-      {/* Main Container */}
-
-      {/* <nav className="flex items-center space-x-2 text-gray-500 text-sm">
-      <Link to="/src/Pages/About.jsx" className="hover:text-gray-700">
-        Home
-      </Link>
-      <span className="text-gray-400">/</span>
-      <span className="font-semibold text-black">About</span>
-    </nav>      */}
       <div className="flex flex-col">
         <div className="bg-white py-16 relative">
           {/* Main Container */}
@@ -94,11 +82,6 @@ export default function About() {
             </div>
           </div>
         </div>
-
-        {/* Statistics Section */}
-        <section className="py-12 bg-white">
-          <Statistics />
-        </section>
 
         {/* Team Section */}
 

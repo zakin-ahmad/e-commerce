@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="flex flex-col justify-between items-center border bg-black h-auto gap-10">
+        <footer className="w-full flex flex-col justify-between items-center border bg-black h-auto gap-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:mr-16 lg:ml-16 gap-12 sm:max-w-[470px] lg:max-w-[1170px] md:max-w-[1000px] h-auto mt-[80px]">
                 <div className="flex flex-col justify-between gap-3">
                     <div className="flex flex-col justify-between h-[124px]">

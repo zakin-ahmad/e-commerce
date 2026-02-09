@@ -1,6 +1,6 @@
 export default function SignUp() {
     return (
-        <div className="signup border flex items-center">
+        <div className="w-full signup border flex items-center">
             <img className="hidden md:flex md:w-[50%] lg:w-[59%] lg:mr-auto" src="./Side Image.svg" alt="Side Image" />
             <div className="flex mx-auto p-5 s:p-0 flex-col justify-between w-[371px] h-[530px]">
                 <div className="flex flex-col justify-between h-[78px]">

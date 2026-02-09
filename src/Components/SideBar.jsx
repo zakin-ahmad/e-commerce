@@ -1,33 +1,39 @@
-export default function SideBar() {
-    return (
-        <div className="side-bar flex h-[344px]">
-            <ul className=" flex-col space-y-5 space-x-6 w-[217px]">
-                <li className="women-fashion-li li flex justify-between w-48 ml-auto">
-                    <a href="" className="hover:text-gray-300">Woman’s Fashion</a> <img src="/Right arrow.svg" alt="Right arrow" />
-                </li>
-                <li className=" flex justify-between">
-                    <a href="" className="hover:text-gray-300 li2">Men’s Fashion</a> <img src="/Right arrow.svg" alt="Right arrow" />
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Electronics</a>
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Medicine</a>
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Sports & Outdoor</a>
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Baby’s & Toys</a>
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Groceries & Pets</a>
-                </li>
-                <li>
-                    <a href="" className="hover:text-gray-300">Health & Beauty</a>
-                </li>
+import React from 'react';
+import { ChevronRight } from 'lucide-react';
 
-            </ul>
-        </div>
-    )
-}
+const Sidebar = () => {
+  const categories = [
+    { name: "Woman's Fashion", hasSub: true },
+    { name: "Men's Fashion", hasSub: true },
+    { name: "Electronics", hasSub: false },
+    { name: "Home & Lifestyle", hasSub: false },
+    { name: "Medicine", hasSub: false },
+    { name: "Sports & Outdoor", hasSub: false },
+    { name: "Baby's & Toys", hasSub: false },
+    { name: "Groceries & Pets", hasSub: false },
+    { name: "Health & Beauty", hasSub: false },
+  ];
+
+  return (
+    <aside className="w-[250px] lg:border-r border-black/10 pr-4">
+      <ul className="space-y-4">
+        {categories.map((cat, index) => (
+          <li 
+            key={index} 
+            className="group flex items-center justify-between cursor-pointer hover:text-[#DB4444] transition-colors"
+          >
+            <span className="text-base font-normal">{cat.name}</span>
+            {cat.hasSub && (
+              <ChevronRight 
+                size={18} 
+                className="text-black group-hover:text-[#DB4444]" 
+              />
+            )}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+};
+
+export default Sidebar;
